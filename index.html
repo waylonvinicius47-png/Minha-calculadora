@@ -1,0 +1,110 @@
+<style>
+body {
+  margin: 0;
+  background: #000;
+  font-family: Arial, sans-serif;
+}
+
+.calculadora {
+  width: 100%;
+  max-width: 360px;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #181818;
+  border-radius: 30px;
+}
+
+#display {
+  width: 100%;
+  height: 130px;
+  box-sizing: border-box;
+  background: #181818;
+  color: white;
+  border: none;
+  font-size: 45px;
+  text-align: right;
+  padding: 10px;
+  outline: none;
+}
+
+.linha {
+  display: flex;
+}
+
+button {
+  flex: 1;
+  height: 70px;
+  margin: 5px;
+  border: none;
+  border-radius: 50%;
+  background: #333;
+  color: white;
+  font-size: 24px;
+}
+
+button:active {
+  transform: scale(0.9);
+  background: #555;
+}
+</style>
+
+<div class="calculadora">
+
+  <input id="display" readonly>
+
+  <div class="linha">
+    <button onclick="limpar()">C</button>
+    <button onclick="add('(')">(</button>
+    <button onclick="add(')')">)</button>
+    <button onclick="add('/')">÷</button>
+  </div>
+
+  <div class="linha">
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button onclick="add('*')">×</button>
+  </div>
+
+  <div class="linha">
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button onclick="add('-')">−</button>
+  </div>
+
+  <div class="linha">
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button onclick="add('+')">+</button>
+  </div>
+
+  <div class="linha">
+    <button onclick="add('0')">0</button>
+    <button onclick="add('.')">.</button>
+    <button onclick="calcular()">=</button>
+  </div>
+
+</div>
+
+<script>
+function add(valor) {
+  document.getElementById("display").value += valor;
+}
+
+function limpar() {
+  document.getElementById("display").value = "";
+}
+
+function calcular() {
+  let display = document.getElementById("display");
+
+  try {
+    display.value = eval(display.value);
+  } catch {
+    display.value = "Erro";
+  }
+}
+</script>
